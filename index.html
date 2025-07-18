@@ -236,8 +236,7 @@
                     <div class="folio-item__thumb">
                         <a class="folio-item__thumb-link" href="images/portfolio/Dequinox.png" title="Building Blocks"
                             data-size="789x364">
-                            <a href="images/portfolio/Dequinox.png" target="_blank"><img
-                                    src="images/portfolio/Dequinox.png" alt="" loading="lazy"></a>
+                            <img data-src="images/portfolio/Dequinox.png" alt="" loading="lazy" class="lazy-bg">
                         </a>
                     </div>
                     <div class="folio-item__info">
@@ -254,8 +253,7 @@
                     <div class="folio-item__thumb">
                         <a class="folio-item__thumb-link" href="images/portfolio/BasketballBoys.png"
                             title="Windows in The City" data-size="789x364">
-                            <a href="images/portfolio/BasketballBoys.png" target="_blank"><img
-                                    src="images/portfolio/BasketballBoys.png" alt="" loading="lazy"></a>
+                            <img data-src="images/portfolio/BasketballBoys.png" alt="" loading="lazy" class="lazy-bg">
                         </a>
                     </div>
                     <div class="folio-item__info">
@@ -272,8 +270,7 @@
                     <div class="folio-item__thumb">
                         <a class="folio-item__thumb-link" href="images/portfolio/BasketballGirls.png"
                             Title="Shout and Jump" data-size="1050x700">
-                            <a href="images/portfolio/BasketballGirls.png" target="_blank"><img
-                                    src="images/portfolio/BasketballGirls.png" alt="" loading="lazy"></a>
+                            <img data-src="images/portfolio/BasketballGirls.png" alt="" loading="lazy" class="lazy-bg">
                         </a>
                     </div>
                     <div class="folio-item__info">
@@ -290,8 +287,7 @@
                     <div class="folio-item__thumb">
                         <a class="folio-item__thumb-link" href="images/portfolio/MyPort.png" title="Sand Dunes"
                             data-size="789x364">
-                            <a href="images/portfolio/MyPort.png" target="_blank"><img src="images/portfolio/MyPort.png"
-                                    alt="" loading="lazy"></a>
+                            <img data-src="images/portfolio/MyPort.png" alt="" loading="lazy" class="lazy-bg">
                         </a>
                     </div>
                     <div class="folio-item__info">
@@ -308,8 +304,7 @@
                     <div class="folio-item__thumb">
                         <a class="folio-item__thumb-link" href="images/portfolio/figma-4.png" title="Sand Dunes"
                             data-size="3000x1000">
-                            <a href="images/portfolio/figma-4.png" target="_blank"><img
-                                    src="images/portfolio/figma-4.png" alt="" loading="lazy"></a>
+                            <img data-src="images/portfolio/figma-4.png" alt="" loading="lazy" class="lazy-bg">
                         </a>
                     </div>
                     <div class="folio-item__info">
@@ -327,8 +322,7 @@
                     <div class="folio-item__thumb">
                         <a class="folio-item__thumb-link" href="images/portfolio/figma-5.jpeg" title="The Lamp"
                             data-size="1050x700">
-                            <a href="images/portfolio/figma-5.jpeg" target="_blank"><img
-                                    src="images/portfolio/figma-5.jpeg" alt="" loading="lazy"></a>
+                            <img data-src="images/portfolio/figma-5.jpeg" alt="" loading="lazy" class="lazy-bg">
                         </a>
                     </div>
                     <div class="folio-item__info">
@@ -357,20 +351,20 @@
             </div>
         </div> <div class="row video-portfolio-list" data-aos="fade-up">
             <div class="column video-item">
-                <video poster="images/portfolio/videos/vidoneposter.png" muted loop preload="none">
-                    <source src="images/portfolio/videos/vidone.mp4" type="video/mp4">
+                <video data-poster="images/portfolio/videos/vidoneposter.png" muted loop preload="none" class="lazy-bg-video">
+                    <source data-src="images/portfolio/videos/vidone.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
             <div class="column video-item">
-                <video poster="images/portfolio/videos/vidtwoposter.png" muted loop preload="none">
-                    <source src="images/portfolio/videos/vidtwo.mp4" type="video/mp4">
+                <video data-poster="images/portfolio/videos/vidtwoposter.png" muted loop preload="none" class="lazy-bg-video">
+                    <source data-src="images/portfolio/videos/vidtwo.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
             <div class="column video-item">
-                <video poster="images/portfolio/videos/vidthreeposter.png" muted loop preload="none">
-                    <source src="images/portfolio/videos/vidthree.mp4" type="video/mp4">
+                <video data-poster="images/portfolio/videos/vidthreeposter.png" muted loop preload="none" class="lazy-bg-video">
+                    <source data-src="images/portfolio/videos/vidthree.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -504,5 +498,27 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script>
+window.addEventListener('load', function() {
+  // Portfolio and video portfolio images
+  document.querySelectorAll('img.lazy-bg').forEach(function(img) {
+    if (img.dataset.src) {
+      img.src = img.dataset.src;
+    }
+  });
+  // Video portfolio videos
+  document.querySelectorAll('video.lazy-bg-video').forEach(function(video) {
+    if (video.dataset.poster) {
+      video.poster = video.dataset.poster;
+    }
+    video.preload = 'auto';
+    var source = video.querySelector('source');
+    if (source && source.dataset.src) {
+      source.src = source.dataset.src;
+      video.load();
+    }
+  });
+});
+</script>
 
 </body>
